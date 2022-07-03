@@ -11,17 +11,6 @@
     <Property Name="phone" Type="Int32" Nullable="false" />
     <Property Name="user_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="customer">
-    <Key>
-      <PropertyRef Name="customer_id" />
-    </Key>
-    <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="customer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="dob" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="phone" Type="Int32" Nullable="false" />
-    <Property Name="user_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-  </EntityType>
   <EntityType Name="driver">
     <Key>
       <PropertyRef Name="driver_id" />
@@ -117,7 +106,6 @@
   </EntityType>
   <EntityContainer Name="AspdotNetSummerDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="admins" EntityType="Self.admin" />
-    <EntitySet Name="customers" EntityType="Self.customer" />
     <EntitySet Name="drivers" EntityType="Self.driver" />
     <EntitySet Name="labour_work_shedule" EntityType="Self.labour_work_shedule" />
     <EntitySet Name="labours" EntityType="Self.labour" />
@@ -126,5 +114,17 @@
     <EntitySet Name="users" EntityType="Self.user" />
     <EntitySet Name="activity_logs" EntityType="Self.activity_logs" />
     <EntitySet Name="reviews" EntityType="Self.review" />
+    <EntitySet Name="customers" EntityType="AspdotNetSummerDBModel.customer" />
   </EntityContainer>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dob" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

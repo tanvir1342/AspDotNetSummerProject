@@ -285,6 +285,8 @@
     <Content Include="Views\Manager\Home.cshtml" />
     <Content Include="Views\Labour\Home.cshtml" />
     <Content Include="Views\Driver\Home.cshtml" />
+    <Content Include="Views\Customer\profile.cshtml" />
+    <Content Include="Views\Customer\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

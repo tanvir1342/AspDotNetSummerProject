@@ -9,11 +9,11 @@
  
     <form action="" method="post">
         <h2>Create your Account</h2>
-        Email:<input type="text" name="customer-name" class="form-control" />
-        @Html.ValidationMessage("ProductId", new { @class = "text-danger" })<br />
-        Password:<input type="text" name="ProductName" class="form-control" />
-        @Html.ValidationMessage("ProductName", new { @class = "text-danger" })<br />
-        <input type="submit" name="submit" class="btn btn-primary" />
+        Email:<input type="email" name="email" class="form-control" />
+        @Html.ValidationMessage("email", new { @class = "text-danger" })<br />
+        Password:<input type="password" name="password" class="form-control" />
+        @Html.ValidationMessage("password", new { @class = "text-danger" })<br />
+        <input type="submit" name="submit" value="Signup" class="btn btn-primary" />
     </form>
 </div>
 

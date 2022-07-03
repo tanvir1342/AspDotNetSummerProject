@@ -36,10 +36,10 @@ warning 6002: The table/view 'AspdotNetSummerDB.dbo.activity_logs' does not have
           </Key>
           <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="customer_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="dob" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="dob" Type="date" Nullable="false" />
           <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="phone" Type="int" Nullable="false" />
-          <Property Name="user_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="drivers">
           <Key>
@@ -165,17 +165,6 @@ FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
           <Property Name="phone" Type="Int32" Nullable="false" />
           <Property Name="user_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="customer">
-          <Key>
-            <PropertyRef Name="customer_id" />
-          </Key>
-          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="customer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="dob" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="phone" Type="Int32" Nullable="false" />
-          <Property Name="user_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-        </EntityType>
         <EntityType Name="driver">
           <Key>
             <PropertyRef Name="driver_id" />
@@ -271,7 +260,6 @@ FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
         </EntityType>
         <EntityContainer Name="AspdotNetSummerDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admins" EntityType="Self.admin" />
-          <EntitySet Name="customers" EntityType="Self.customer" />
           <EntitySet Name="drivers" EntityType="Self.driver" />
           <EntitySet Name="labour_work_shedule" EntityType="Self.labour_work_shedule" />
           <EntitySet Name="labours" EntityType="Self.labour" />
@@ -280,7 +268,19 @@ FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
           <EntitySet Name="users" EntityType="Self.user" />
           <EntitySet Name="activity_logs" EntityType="Self.activity_logs" />
           <EntitySet Name="reviews" EntityType="Self.review" />
+          <EntitySet Name="customers" EntityType="AspdotNetSummerDBModel.customer" />
         </EntityContainer>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -292,18 +292,6 @@ FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
               <MappingFragment StoreEntitySet="admins">
                 <ScalarProperty Name="admin_id" ColumnName="admin_id" />
                 <ScalarProperty Name="admin_name" ColumnName="admin_name" />
-                <ScalarProperty Name="dob" ColumnName="dob" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="customers">
-            <EntityTypeMapping TypeName="AspdotNetSummerDBModel.customer">
-              <MappingFragment StoreEntitySet="customers">
-                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
-                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
                 <ScalarProperty Name="dob" ColumnName="dob" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
@@ -402,6 +390,18 @@ FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
                 <ScalarProperty Name="review_id" ColumnName="review_id" />
                 <ScalarProperty Name="comment" ColumnName="comment" />
                 <ScalarProperty Name="review_date" ColumnName="review_date" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="AspdotNetSummerDBModel.customer">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
               </MappingFragment>
             </EntityTypeMapping>

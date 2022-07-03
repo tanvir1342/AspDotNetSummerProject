@@ -26,7 +26,6 @@ namespace AspDotNetSummerProject.Models.Db
         }
     
         public DbSet<admin> admins { get; set; }
-        public DbSet<customer> customers { get; set; }
         public DbSet<driver> drivers { get; set; }
         public DbSet<labour_work_shedule> labour_work_shedule { get; set; }
         public DbSet<labour> labours { get; set; }
@@ -35,5 +34,6 @@ namespace AspDotNetSummerProject.Models.Db
         public DbSet<user> users { get; set; }
         public DbSet<activity_logs> activity_logs { get; set; }
         public DbSet<review> reviews { get; set; }
+        public DbSet<customer> customers { get; set; }
     }
 }

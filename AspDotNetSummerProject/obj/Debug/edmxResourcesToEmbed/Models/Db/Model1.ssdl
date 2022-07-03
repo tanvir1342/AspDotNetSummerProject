@@ -31,10 +31,10 @@ warning 6002: The table/view 'AspdotNetSummerDB.dbo.activity_logs' does not have
     </Key>
     <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="customer_name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="dob" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="dob" Type="date" Nullable="false" />
     <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="phone" Type="int" Nullable="false" />
-    <Property Name="user_id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="drivers">
     <Key>
