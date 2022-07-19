@@ -55,6 +55,7 @@ warning 6002: The table/view 'AspdotNetSummerDB.dbo.activity_logs' does not have
           <Property Name="vechile_type" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="manger_id" Type="int" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="labour_work_shedule">
           <Key>
@@ -84,19 +85,15 @@ warning 6002: The table/view 'AspdotNetSummerDB.dbo.activity_logs' does not have
           <Property Name="phone" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'AspdotNetSummerDB.dbo.reviews' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="reviews">
           <Key>
             <PropertyRef Name="review_id" />
-            <PropertyRef Name="comment" />
-            <PropertyRef Name="review_date" />
-            <PropertyRef Name="customer_id" />
           </Key>
-          <Property Name="review_id" Type="int" Nullable="false" />
-          <Property Name="comment" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="review_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comment" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="review_date" Type="date" Nullable="false" />
           <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="trip_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="trip_operations">
           <Key>
@@ -131,6 +128,7 @@ warning 6002: The table/view 'AspdotNetSummerDB.dbo.reviews' does not have a pri
           <EntitySet Name="labour_work_shedule" EntityType="Self.labour_work_shedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="labours" EntityType="Self.labours" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="managers" EntityType="Self.managers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reviews" EntityType="Self.reviews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="trip_operations" EntityType="Self.trip_operations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="activity_logs" EntityType="Self.activity_logs" store:Type="Tables" store:Schema="dbo">
@@ -140,14 +138,6 @@ warning 6002: The table/view 'AspdotNetSummerDB.dbo.reviews' does not have a pri
 [activity_logs].[date] AS [date], 
 [activity_logs].[user_id] AS [user_id]
 FROM [dbo].[activity_logs] AS [activity_logs]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="reviews" EntityType="Self.reviews" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[reviews].[review_id] AS [review_id], 
-[reviews].[comment] AS [comment], 
-[reviews].[review_date] AS [review_date], 
-[reviews].[customer_id] AS [customer_id]
-FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -179,6 +169,7 @@ FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
           <Property Name="vechile_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="manger_id" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="labour_work_shedule">
           <Key>
@@ -246,18 +237,6 @@ FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="review">
-          <Key>
-            <PropertyRef Name="review_id" />
-            <PropertyRef Name="comment" />
-            <PropertyRef Name="review_date" />
-            <PropertyRef Name="customer_id" />
-          </Key>
-          <Property Name="review_id" Type="Int32" Nullable="false" />
-          <Property Name="comment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="review_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="customer_id" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="AspdotNetSummerDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admins" EntityType="Self.admin" />
           <EntitySet Name="drivers" EntityType="Self.driver" />
@@ -267,8 +246,8 @@ FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
           <EntitySet Name="trip_operations" EntityType="Self.trip_operations" />
           <EntitySet Name="users" EntityType="Self.user" />
           <EntitySet Name="activity_logs" EntityType="Self.activity_logs" />
-          <EntitySet Name="reviews" EntityType="Self.review" />
           <EntitySet Name="customers" EntityType="AspdotNetSummerDBModel.customer" />
+          <EntitySet Name="reviews" EntityType="AspdotNetSummerDBModel.review" />
         </EntityContainer>
         <EntityType Name="customer">
           <Key>
@@ -280,6 +259,16 @@ FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
           <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="Int32" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="review">
+          <Key>
+            <PropertyRef Name="review_id" />
+          </Key>
+          <Property Name="review_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="review_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="trip_id" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -302,6 +291,7 @@ FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
           <EntitySetMapping Name="drivers">
             <EntityTypeMapping TypeName="AspdotNetSummerDBModel.driver">
               <MappingFragment StoreEntitySet="drivers">
+                <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="driver_id" ColumnName="driver_id" />
                 <ScalarProperty Name="driver_name" ColumnName="driver_name" />
                 <ScalarProperty Name="dob" ColumnName="dob" />
@@ -384,16 +374,6 @@ FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="reviews">
-            <EntityTypeMapping TypeName="AspdotNetSummerDBModel.review">
-              <MappingFragment StoreEntitySet="reviews">
-                <ScalarProperty Name="review_id" ColumnName="review_id" />
-                <ScalarProperty Name="comment" ColumnName="comment" />
-                <ScalarProperty Name="review_date" ColumnName="review_date" />
-                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="customers">
             <EntityTypeMapping TypeName="AspdotNetSummerDBModel.customer">
               <MappingFragment StoreEntitySet="customers">
@@ -403,6 +383,17 @@ FROM [dbo].[reviews] AS [reviews]</DefiningQuery>
                 <ScalarProperty Name="dob" ColumnName="dob" />
                 <ScalarProperty Name="customer_name" ColumnName="customer_name" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reviews">
+            <EntityTypeMapping TypeName="AspdotNetSummerDBModel.review">
+              <MappingFragment StoreEntitySet="reviews">
+                <ScalarProperty Name="trip_id" ColumnName="trip_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="review_date" ColumnName="review_date" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="review_id" ColumnName="review_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

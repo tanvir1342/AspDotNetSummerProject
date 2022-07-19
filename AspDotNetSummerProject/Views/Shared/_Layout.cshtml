@@ -6,6 +6,9 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 </head>
 <body class="p-0 m-0">
     <nav class="navbar navbar-expand-lg bg-light fs-5">
@@ -24,8 +27,16 @@
                     <a class="nav-link text-black" href="#">Features</a>
                     <a class="nav-link text-black" href="#">Pricing</a>
                     <a class="nav-link text-black" href="#">About Us</a>
-                    <a class="nav-link text-black" href="#">Login</a>
-                    <a class="nav-link text-black" href="../customer/create">Signup</a>
+
+                    @if(Session["logged_user"] == null)
+                    {
+                        <a class="nav-link text-black" href="#">Login</a>
+                        <a class="nav-link text-black" href="../customer/create">Signup</a>
+                    }
+                    else{
+                    <a class="nav-link text-black" href="../Customer/Logout">Logout</a>
+                    }
+
 
                 </div>
             </div>

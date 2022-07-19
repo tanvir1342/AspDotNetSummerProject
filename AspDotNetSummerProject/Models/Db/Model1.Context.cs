@@ -33,7 +33,7 @@ namespace AspDotNetSummerProject.Models.Db
         public DbSet<trip_operations> trip_operations { get; set; }
         public DbSet<user> users { get; set; }
         public DbSet<activity_logs> activity_logs { get; set; }
-        public DbSet<review> reviews { get; set; }
         public DbSet<customer> customers { get; set; }
+        public DbSet<review> reviews { get; set; }
     }
 }

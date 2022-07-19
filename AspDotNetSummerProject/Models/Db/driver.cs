@@ -24,5 +24,6 @@ namespace AspDotNetSummerProject.Models.Db
         public string vechile_type { get; set; }
         public int user_id { get; set; }
         public int manger_id { get; set; }
+        public string address { get; set; }
     }
 }

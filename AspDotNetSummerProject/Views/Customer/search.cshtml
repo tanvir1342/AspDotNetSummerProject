@@ -7,10 +7,10 @@
 
     <form action="" method="post">
         <h2>Set your Load and unload Area</h2>
-        Load Location:<input type="text" name="customer-name" class="form-control" />
-        @Html.ValidationMessage("ProductId", new { @class = "text-danger" })<br />
-        Unload Location:<input type="text" name="ProductName" class="form-control" />
-        @Html.ValidationMessage("ProductName", new { @class = "text-danger" })<br />
+        Load Location:<input type="text" name="start_location" class="form-control" />
+        @Html.ValidationMessage("start_location", new { @class = "text-danger" })<br />
+        Unload Location:<input type="text" name="end_location" class="form-control" />
+        @Html.ValidationMessage("end_location", new { @class = "text-danger" })<br />
         <input type="submit" name="submit" class="btn btn-primary" />
     </form>
 </div>

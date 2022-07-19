@@ -13,8 +13,8 @@
         <EntityTypeShape EntityType="AspdotNetSummerDBModel.trip_operations" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AspdotNetSummerDBModel.user" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AspdotNetSummerDBModel.activity_logs" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AspdotNetSummerDBModel.review" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AspdotNetSummerDBModel.customer" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="AspdotNetSummerDBModel.review" Width="1.5" PointX="7.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

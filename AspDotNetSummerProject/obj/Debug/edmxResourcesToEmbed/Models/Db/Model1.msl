@@ -98,16 +98,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="reviews">
-      <EntityTypeMapping TypeName="AspdotNetSummerDBModel.review">
-        <MappingFragment StoreEntitySet="reviews">
-          <ScalarProperty Name="review_id" ColumnName="review_id" />
-          <ScalarProperty Name="comment" ColumnName="comment" />
-          <ScalarProperty Name="review_date" ColumnName="review_date" />
-          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="customers">
       <EntityTypeMapping TypeName="AspdotNetSummerDBModel.customer">
         <MappingFragment StoreEntitySet="customers">
@@ -117,6 +107,17 @@
           <ScalarProperty Name="dob" ColumnName="dob" />
           <ScalarProperty Name="customer_name" ColumnName="customer_name" />
           <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reviews">
+      <EntityTypeMapping TypeName="AspdotNetSummerDBModel.review">
+        <MappingFragment StoreEntitySet="reviews">
+          <ScalarProperty Name="trip_id" ColumnName="trip_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="review_date" ColumnName="review_date" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="review_id" ColumnName="review_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
